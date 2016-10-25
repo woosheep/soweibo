@@ -24,12 +24,13 @@ def fetchweibos(kword):
 		kword_dict[kword] = cur
 		showmsg(url)
 	else:
-		print 'next'
+		print
 		
 
 def showmsg(msg):
-	print 'got something new'
-	webbrowser.open_new_tab(msg)
+	print 'Got'
+	if not is1st:
+		webbrowser.open_new_tab(msg)
 
 
 #txt should be utf8 format
@@ -38,15 +39,14 @@ def fetchkword():
 		kword = kword.strip()
 		kword_dict[kword] = 0
 
-
+is1st = True
 kword_dict = {}
 fetchkword()
-i=0
 while True:
 	for kword in kword_dict.keys():
-		i +=1
-		print '%s.%s:Now starting ...' %(i, kword.decode('utf8')),
+		print '%s %s: ...' %(time.strftime('%H:%M:%S', time.localtime()), kword.decode('utf8')),
 		fetchweibos(kword)
-		time.sleep(15)
+		time.sleep(20)
+	is1st = False
 	print "==============================="
 	time.sleep(30)
