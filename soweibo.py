@@ -2,7 +2,6 @@
 
 import requests, webbrowser, time
 from urllib import quote
-import smtplib
 
 
 def fetchweibos(kword):
@@ -29,11 +28,13 @@ def fetchweibos(kword):
 def showmsg(msg):
 	webbrowser.open_new_tab(msg)
 
+
 #txt should be utf8 format
 def fetchkword():
 	for kword in open("kword.txt"):
 		kword = kword.strip()
 		kword_dict[kword] = 0
+
 
 kword_dict = {}
 fetchkword()
