@@ -23,7 +23,11 @@ def fetchweibos(kword):
 		exit()
 	elif cur > kword_dict[kword]:
 		kword_dict[kword] = cur
-		webbrowser.open_new_tab(url)
+		showmsg(url)
+		
+
+def showmsg(msg):
+	webbrowser.open_new_tab(msg)
 
 #txt should be utf8 format
 def fetchkword():
@@ -40,5 +44,5 @@ while True:
 		print '%s.%s:Now starting ...' %(i, kword.decode('utf8'))
 		fetchweibos(kword)
 		time.sleep(15)
-	print "==================================="
+	print "==============================="
 	time.sleep(30)
