@@ -23,9 +23,12 @@ def fetchweibos(kword):
 	elif cur > kword_dict[kword]:
 		kword_dict[kword] = cur
 		showmsg(url)
+	else:
+		print 'next'
 		
 
 def showmsg(msg):
+	print 'got something new'
 	webbrowser.open_new_tab(msg)
 
 
@@ -42,7 +45,7 @@ i=0
 while True:
 	for kword in kword_dict.keys():
 		i +=1
-		print '%s.%s:Now starting ...' %(i, kword.decode('utf8'))
+		print '%s.%s:Now starting ...' %(i, kword.decode('utf8')),
 		fetchweibos(kword)
 		time.sleep(15)
 	print "==============================="
