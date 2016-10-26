@@ -13,7 +13,9 @@ def fetchweibos(kword):
 	#add %25
 	url = url %(quote(kword).replace('%', "%25"), time.strftime('%Y-%m-%d', time.localtime()))
 	html = requests.get(url, headers=headers).content
+	return html
 
+def checkupd(html):
 	cur = 0
 	if html.find("noresult_tit") == -1:
 		cur = html.count('WB_cardwrap S_bg2 clearfix')
@@ -41,12 +43,14 @@ def fetchkword():
 
 is1st = True
 kword_dict = {}
+url = ''
 fetchkword()
 while True:
 	for kword in kword_dict.keys():
-		print '%s %s: ...' %(time.strftime('%H:%M:%S', time.localtime()), kword.decode('utf8')),
-		fetchweibos(kword)
+		print '%s %s: ' %(time.strftime('%H:%M:%S', time.localtime()), kword.decode('utf8')),
+		html = fetchweibos(kword)
+		print "...",
+		checkupd(html)
 		time.sleep(20)
 	is1st = False
 	print "==============================="
-	time.sleep(30)
