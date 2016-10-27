@@ -10,7 +10,7 @@ def fetchweibos(kword):
 	headers = {'user-agent': \
 	'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/532 (KHTML, like Gecko) Chrome/45 Safari/532 Fck',\
 	'Cookie': \
-	'SINAGLOBAL=1645489266019.149.1470792372411; SCF=AtZCZIRlC5wiArrVF9MWe7qvnErH-dD5L4oSB-Ep7jFwx9YS5BE0oAOhwkkQFLWS7CSCkqI9QROmvcfU0d5uthU.; SUHB=079ygO35U-w-mV; _s_tentry=login.sina.com.cn; Apache=2908473703816.1836.1477281351697; ULV=1477281351705:107:21:3:2908473703816.1836.1477281351697:1477272550916; SWB=usrmdinst_1; UOR=,,login.sina.com.cn; WBtopGlobal_register_version=96e660181b891f73; NSC_wjq_txfjcp_mjotij=ffffffff094113d345525d5f4f58455e445a4a423660; ULOGIN_IMG=14773020205331; ALF=1479894076; SUB=_2A251CadsDeTxGedJ41US-CfMzjmIHXVW9ckkrDV8PUJbkNAKLXPykW1xh9c7XwWqNxtK9m86_dVc8YfCCw..; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWDJnyk.zvzlVgr7aS-ogCG5JpX5oz75NHD95QpS0nNe0n4eh-fWs4Dqcj.i--ciKLhi-2Ri--Ni-i8iKyWi--fiK.7iKyhi--fi-82i-2c; WBStorage=86fb700cbf513258|undefined'}
+	'SINAGLOBAL=1645489266019.149.1470792372411; SCF=AtZCZIRlC5wiArrVF9MWe7qvnErH-dD5L4oSB-Ep7jFwx9YS5BE0oAOhwkkQFLWS7CSCkqI9QROmvcfU0d5uthU.; SUHB=079ygO35U-w-mV; UOR=,,login.sina.com.cn; ALF=1479894076; SUB=_2A251CadsDeTxGedJ41US-CfMzjmIHXVW9ckkrDV8PUJbkNAKLXPykW1xh9c7XwWqNxtK9m86_dVc8YfCCw..; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWDJnyk.zvzlVgr7aS-ogCG5JpX5oz75NHD95QpS0nNe0n4eh-fWs4Dqcj.i--ciKLhi-2Ri--Ni-i8iKyWi--fiK.7iKyhi--fi-82i-2c; wvr=6; SWB=usrmdinst_12; _s_tentry=-; Apache=8448649781523.334.1477528061108; ULV=1477528061137:116:30:12:8448649781523.334.1477528061108:1477439907052; NSC_wjq_txfjcp_mjotij=ffffffff094113d445525d5f4f58455e445a4a423660; ULOGIN_IMG=14775291383503; WBStorage=86fb700cbf513258|undefined'}
 	#add %25
 	url = url %(quote(kword).replace('%', "%25"), time.strftime('%Y-%m-%d', time.localtime()))
 	html = requests.get(url, headers=headers).content
@@ -51,7 +51,7 @@ while True:
 		html,url = fetchweibos(kword)
 		print "...",
 		checkupd(html, url)
-		if not is1st:
-			time.sleep(20)
+		time.sleep(20)
+
 	is1st = False
 	print "==============================="
